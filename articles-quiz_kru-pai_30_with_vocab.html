@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Kru Pai Classroom — Articles Quiz + Vocabulary Gate (30 ข้อ)</title>
+<style>
+  :root{
+    --bg:#f7fbff;
+    --primary:#0d47a1;
+    --accent:#1976d2;
+    --ink:#0b2545;
+    --muted:#6b8bb6;
+    --good:#2e7d32;
+    --bad:#c62828;
+    --card:#ffffff;
+    --shadow:0 10px 30px rgba(13,71,161,.08);
+    --radius:18px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:'Segoe UI',system-ui,-apple-system,Arial,sans-serif;color:var(--ink);
+       background:linear-gradient(180deg,var(--bg),#eaf2ff 60%);min-height:100vh;}
+  header{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;
+         position:sticky;top:0;z-index:5;background:rgba(247,251,255,.75);
+         backdrop-filter:saturate(1.2) blur(6px);border-bottom:1px solid #e3eefc;}
+  .brand{display:flex;gap:10px;align-items:center;font-weight:700;color:var(--primary);}
+  .brand .mark{width:38px;height:38px;border-radius:12px;background:var(--accent);
+               display:grid;place-items:center;color:#fff;box-shadow:var(--shadow);font-weight:900;}
+  .container{max-width:980px;margin:26px auto;padding:0 16px 60px;}
+  .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px;margin:18px 0;}
+  h1,h2,h3{margin:8px 0 14px} h1{font-size:clamp(24px,3.2vw,34px);color:var(--primary)}
+  h2{font-size:clamp(20px,2.4vw,26px);color:var(--accent)} p{line-height:1.6}
+  label{display:block;margin:10px 0;padding:12px 14px;border:1.5px solid #e5efff;border-radius:12px;cursor:pointer;font-size:18px}
+  input[type="radio"]{accent-color:var(--accent);transform:scale(1.2);margin-right:8px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 18px;border-radius:14px;border:0;
+       background:var(--primary);color:#fff;font-weight:700;box-shadow:0 8px 18px rgba(13,71,161,.18);cursor:pointer;transition:transform .05s ease;font-size:16px}
+  .btn:active{transform:translateY(1px)} .btn.secondary{background:var(--accent)} .btn.ghost{background:#fff;color:var(--primary);border:2px solid #cfe3ff}
+  .btn.danger{background:var(--bad)} .btn.good{background:var(--good)}
+  .toolbar{display:flex;gap:10px;flex-wrap:wrap}
+  .muted{color:var(--muted);font-size:14px} .big{font-size:20px} .center{text-align:center}
+  .hidden{display:none !important}
+  .badge{display:inline-flex;align-items:center;gap:8px;background:#e9f2ff;border:1px solid #cfe3ff;color:var(--primary);
+         padding:8px 12px;border-radius:999px;font-weight:600;}
+  .scoreboard{display:flex;align-items:center;justify-content:space-between;gap:12px;background:#e9f2ff;border:1px solid #cfe3ff;border-radius:14px;
+              padding:10px 14px;margin-bottom:10px;font-weight:700;color:var(--primary)}
+  .question{font-size:20px;margin-bottom:8px}
+  .footer-note{text-align:center;color:#90a4d4;margin-top:22px;font-size:14px}
+  .grid-2{display:grid;grid-template-columns:1fr;gap:16px}
+  @media (min-width:860px){.grid-2{grid-template-columns:1.1fr .9fr}}
+  .list{margin:0;padding-left:18px} .list li{margin:6px 0}
+  .pill{display:inline-block;background:#e9f2ff;border:1px solid #cfe3ff;color:var(--primary);
+        padding:4px 10px;border-radius:999px;font-size:13px;margin-right:6px}
+  .no-article{font-style:italic;color:#6b8bb6}
+  table{width:100%;border-collapse:separate;border-spacing:0;overflow:hidden;border-radius:14px;border:1px solid #e3eefc}
+  th,td{padding:10px 12px;border-bottom:1px solid #eaf2ff}
+  th{background:#e9f2ff;color:var(--primary);text-align:left}
+  tr:last-child td{border-bottom:none}
+  .vocab-grid{display:grid;grid-template-columns:1fr;gap:16px}
+  @media(min-width:860px){.vocab-grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">
+    <div class="mark">KP</div>
+    <div>
+      Kru Pai Classroom<br/><span class="muted">Articles — Grammar Game + Vocabulary Gate</span>
+    </div>
+  </div>
+  <div class="badge">โทนสี: ฟ้า–น้ำเงิน | ไม่มีเสียง</div>
+</header>
+
+<div class="container">
+
+  <!-- START -->
+  <section id="screen-start" class="card">
+    <h1 class="center">🐧 เกม Articles: a / an / the / – 🐱</h1>
+    <p class="center big">กรอกชื่อ → ทบทวนคำศัพท์ 60 คำ → สรุปกฎ → ทำแบบทดสอบ 30 ข้อ</p>
+    <div class="card">
+      <label>ชื่อผู้เล่น
+        <input id="playerName" type="text" placeholder="เช่น Nam, Mint, Top" style="width:100%;padding:12px 14px;margin-top:6px;border-radius:12px;border:1.5px solid #cfe3ff;font-size:18px">
+      </label>
+      <div class="toolbar">
+        <button class="btn secondary" onclick="goVocab()">ไปหน้าทบทวนคำศัพท์ (60 คำ)</button>
+      </div>
+    </div>
+    <div class="footer-note">© Kru Pai Classroom • ออกแบบเพื่อเด็กประถม–มัธยมต้น</div>
+  </section>
+
+  <!-- VOCAB GATE -->
+  <section id="screen-vocab" class="card hidden">
+    <h2>📖 Vocabulary Gate — คำศัพท์ที่ควรรู้ (60 คำ)</h2>
+    <p class="muted">*คำอ่านไทยเป็นการถอดเสียงโดยประมาณ เพื่อช่วยให้ออกเสียงง่ายขึ้น</p>
+    <div class="vocab-grid">
+      <div class="card">
+        <table>
+          <thead><tr><th>English</th><th>คำอ่านไทย</th><th>คำแปล</th></tr></thead>
+          <tbody id="vocabCol1"></tbody>
+        </table>
+      </div>
+      <div class="card">
+        <table>
+          <thead><tr><th>English</th><th>คำอ่านไทย</th><th>คำแปล</th></tr></thead>
+          <tbody id="vocabCol2"></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="toolbar" style="margin-top:10px">
+      <button class="btn ghost" onclick="backToStart()">ย้อนกลับ</button>
+      <button class="btn" onclick="goRules()">ไปสรุปกฎ Articles</button>
+    </div>
+  </section>
+
+  <!-- RULES -->
+  <section id="screen-rules" class="card hidden">
+    <h2>📘 สรุปการใช้ Articles (ย่อ)</h2>
+    <div class="grid-2">
+      <div class="card">
+        <h3>🧩 ใช้ตอนไหน</h3>
+        <ul class="list">
+          <li><span class="pill">a</span> หน้าคำนามนับได้เอกพจน์ขึ้นต้นด้วย “เสียงพยัญชนะ” (a dog)</li>
+          <li><span class="pill">an</span> หน้าคำนามนับได้เอกพจน์ขึ้นต้นด้วย “เสียงสระ” หรือ h ไม่ออกเสียง (an apple, an hour)</li>
+          <li><span class="pill">the</span> ใช้เมื่อพูดถึงสิ่งที่เฉพาะเจาะจง/รู้กัน (the sun, the book we discussed)</li>
+          <li><span class="pill">–</span> ไม่ใช้ article กับนามทั่วไป/นับไม่ได้/พหูพจน์/วิชา/กีฬา (water, music, cats)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>💡 เคล็ดลับ</h3>
+        <ul class="list">
+          <li>เสียงนำหน้าสำคัญกว่า “ตัวอักษร” → <b>an</b> hour, <b>a</b> university</li>
+          <li>ครั้งแรกมักใช้ <b>a/an</b>; ครั้งถัดไปอาจใช้ <b>the</b></li>
+        </ul>
+      </div>
+    </div>
+    <div class="toolbar">
+      <button class="btn ghost" onclick="backToStart()">ย้อนกลับ</button>
+      <button class="btn" onclick="startQuiz()">เริ่มเล่นเกม 30 ข้อ</button>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="screen-quiz" class="hidden">
+    <div class="scoreboard">
+      <div>ผู้เล่น: <span id="playerLabel">-</span></div>
+      <div>ข้อ: <span id="qIndex">1</span>/<span id="qTotal">30</span></div>
+    </div>
+    <div class="card">
+      <div class="question" id="qText">❓ ...</div>
+      <div id="options"></div>
+      <div class="toolbar" style="margin-top:8px">
+        <button class="btn secondary" onclick="nextQuestion()">ถัดไป</button>
+      </div>
+      <div class="muted">* เลือกคำตอบก่อน แล้วกด “ถัดไป”</div>
+    </div>
+    <div class="toolbar">
+      <button class="btn ghost" onclick="confirmQuit()">กลับหน้าแรก</button>
+    </div>
+  </section>
+
+  <!-- RESULT -->
+  <section id="screen-result" class="card hidden">
+    <h2 class="center">🎉 สรุปคะแนน 🏆</h2>
+    <div class="card center">
+      <p class="big">คะแนนของ <b id="playerFinal">-</b></p>
+      <p class="big">ได้ <b id="scoreNum">0</b> / <b id="scoreDen">30</b>  (<b id="scorePct">0%</b>)</p>
+      <p id="passNote" class="big" style="font-weight:800;color:var(--good)">ผ่าน 🌟</p>
+      <p id="failNote" class="big hidden" style="font-weight:800;color:var(--bad)">ยังไม่ผ่าน (เกณฑ์ 80%) 💪</p>
+    </div>
+    <div class="toolbar center" style="justify-content:center;margin-top:6px">
+      <button class="btn" onclick="retryQuiz()">เริ่มทดสอบใหม่</button>
+      <button class="btn ghost" onclick="backToStart()">กลับหน้าแรก</button>
+      <button id="viewAnsBtn" class="btn danger hidden" onclick="showAnswers()">ดูเฉลย</button>
+    </div>
+    <p class="muted center" id="attemptInfo"></p>
+    <p class="muted center">🌟 สู้ ๆ นะ! ทำได้แน่นอน 🌟</p>
+  </section>
+
+  <!-- ANSWERS -->
+  <section id="screen-answers" class="card hidden">
+    <h2>📗 เฉลย Articles (30 ข้อ)</h2>
+    <ol id="answerList"></ol>
+    <div class="toolbar">
+      <button class="btn" onclick="backToStart()">กลับหน้าแรก</button>
+    </div>
+  </section>
+
+</div>
+
+<script>
+const PASS_RATE = 0.80;
+let player = "";
+let current = 0;
+let selections = [];
+let attemptsMade = 0;   // จำนวนรอบที่ทำเสร็จ
+let everFailed = false; // เคยไม่ผ่านไหม
+
+// ตัวเลือกคงที่ทุกข้อ
+const OPTIONS = ["a","an","the","–"];
+
+// คำศัพท์ 60 คำ (2 คำต่อข้อ) — English, ThaiPronounce, ThaiMeaning
+const VOCABS = [
+  ["cat","แคท","แมว"], ["garden","การ์เดิน","สวน"],
+  ["orange","ออเร็นจ์","ส้ม"], ["want","วอนท์","ต้องการ"],
+  ["park","พาร์ก","สวนสาธารณะ"], ["yesterday","เยส-เทอะ-เดย์","เมื่อวาน"],
+  ["music","มิว-สิค","ดนตรี"], ["like","ไลก์","ชอบ"],
+  ["book","บุ๊ก","หนังสือ"], ["desk","เดสก์","โต๊ะเขียนหนังสือ"],
+  ["honest","ออเนสต์","ซื่อสัตย์"], ["man","แมน","ผู้ชาย"],
+  ["playground","เพลย์-กราวนด์","สนามเด็กเล่น"], ["school","สคูล","โรงเรียน"],
+  ["milk","มิลก์","นม"], ["morning","มอร์-นิง","ตอนเช้า"],
+  ["umbrella","อัม-เบรล-ลา","ร่ม"], ["buy","บาย","ซื้อ"],
+  ["children","ชิล-เดรน","เด็ก ๆ"], ["story","สตอ-รี","เรื่องเล่า"],
+  ["river","ริเวอร์","แม่น้ำ"], ["near","เนียร์","ใกล้"],
+  ["apple","แอป-เพิล","แอปเปิล"], ["would you like","วู้ดจูไลก์","ต้องการไหม"],
+  ["teacher","ที-เชอร์","ครู"], ["this","ดิส","นี้"],
+  ["water","วอ-เทอร์","น้ำ"], ["cook","คุ้ก","ทำอาหาร"],
+  ["hotel","โฮ-เทล","โรงแรม"], ["beach","บีช","ชายหาด"],
+  ["sun","ซัน","ดวงอาทิตย์"], ["sky","สกาย","ท้องฟ้า"],
+  ["egg","เอ็กก์","ไข่"], ["breakfast","เบรค-ฟัสท์","อาหารเช้า"],
+  ["spiders","สไป-เดอร์ซ","แมงมุม"], ["don’t like","โดนท์ไลก์","ไม่ชอบ"],
+  ["window","วิน-โดว์","หน้าต่าง"], ["open","โอเพิน","เปิด"],
+  ["pen","เพน","ปากกา"], ["shop","ช็อป","ร้านค้า"],
+  ["elephant","เอ-ละ-แฟนท์","ช้าง"], ["never","เนเวอร์","ไม่เคย"],
+  ["stars","สตาร์ซ","ดวงดาว"], ["tonight","ทูไนท์","คืนนี้"],
+  ["book","บุ๊ก","หนังสือ"], ["gave","เกฟ","ให้ (ช่อง 2)"],
+  ["old","โอลด์","เก่า"], ["friend","เฟรนด์","เพื่อน"],
+  ["supermarket","ซู-เปอร์-มา-เก็ต","ซูเปอร์มาร์เก็ต"], ["near our house","เนียร์ เอาเออร์ เฮาส์","ใกล้บ้านเรา"],
+  ["information","อิน-ฟอร์-เม-ชัน","ข้อมูล"], ["decision","ดิ-ซิ-ชัน","การตัดสินใจ"],
+  ["new","นิว","ใหม่"], ["phone","โฟน","โทรศัพท์"],
+  ["owl","อาวล์","นกฮูก"], ["tree","ทรี","ต้นไม้"],
+  ["moon","มูน","พระจันทร์"], ["looked at","ลุคท์ แอท","มองดู"],
+  ["coffee","คอฟ-ฟี","กาแฟ"], ["evening","อีฟ-นิ่ง","ตอนเย็น"]
+];
+
+// 30 ข้อ พร้อมคำตอบกระจาย a/an/the/–
+const questions = [
+  {text:"I saw ___ cat in the garden.", answer:"a"},
+  {text:"She wants ___ orange.", answer:"an"},
+  {text:"We went to ___ park yesterday.", answer:"the"},
+  {text:"He likes ___ music.", answer:"–"},
+  {text:"There is ___ book on the desk.", answer:"a"},
+  {text:"My father is ___ honest man.", answer:"an"},
+  {text:"They are playing in ___ playground near the school.", answer:"the"},
+  {text:"She usually drinks ___ milk in the morning.", answer:"–"},
+  {text:"I bought ___ umbrella.", answer:"an"},
+  {text:"The children are reading ___ story about animals.", answer:"a"},
+  {text:"He lives near ___ river.", answer:"the"},
+  {text:"Would you like ___ apple?", answer:"an"},
+  {text:"She is ___ teacher at this school.", answer:"a"},
+  {text:"We need ___ water to cook rice.", answer:"–"},
+  {text:"We stayed at ___ hotel near the beach.", answer:"a"},
+  {text:"The sun is shining in ___ sky.", answer:"the"},
+  {text:"He ate ___ egg for breakfast.", answer:"an"},
+  {text:"I don’t like ___ spiders.", answer:"–"},
+  {text:"Can you open ___ window, please?", answer:"the"},
+  {text:"She bought ___ pen from the shop.", answer:"a"},
+  {text:"He has never seen ___ elephant.", answer:"an"},
+  {text:"There are ___ stars in the sky tonight.", answer:"–"},
+  {text:"She was reading ___ book I gave her.", answer:"the"},
+  {text:"I met ___ old friend yesterday.", answer:"an"},
+  {text:"We went to ___ supermarket near our house.", answer:"the"},
+  {text:"He needs ___ information before making a decision.", answer:"–"},
+  {text:"She wants to buy ___ new phone.", answer:"a"},
+  {text:"I saw ___ owl sitting on the tree.", answer:"an"},
+  {text:"We looked at ___ moon.", answer:"the"},
+  {text:"He never drinks ___ coffee in the evening.", answer:"–"}
+];
+
+function $(id){return document.getElementById(id)}
+function show(id){$(id).classList.remove("hidden")}
+function hide(id){$(id).classList.add("hidden")}
+function switchTo(ids){["screen-start","screen-vocab","screen-rules","screen-quiz","screen-result","screen-answers"].forEach(hide); ids.forEach(show);}
+function backToStart(){switchTo(["screen-start"]);}
+
+function goVocab(){
+  // render vocab table (split roughly half into 2 columns)
+  const half = Math.ceil(VOCABS.length/2);
+  const col1 = VOCABS.slice(0, half);
+  const col2 = VOCABS.slice(half);
+  $("vocabCol1").innerHTML = col1.map(([en,thp,thm])=>`<tr><td>${en}</td><td>${thp}</td><td>${thm}</td></tr>`).join("");
+  $("vocabCol2").innerHTML = col2.map(([en,thp,thm])=>`<tr><td>${en}</td><td>${thp}</td><td>${thm}</td></tr>`).join("");
+  switchTo(["screen-vocab"]);
+}
+
+function goRules(){
+  const n = $("playerName").value.trim();
+  player = n || "Player";
+  $("playerLabel").textContent = player;
+  switchTo(["screen-rules"]);
+}
+
+function startQuiz(){
+  selections = Array(questions.length).fill(null);
+  current = 0;
+  $("playerLabel").textContent = player;
+  $("qTotal").textContent = questions.length;
+  renderQuestion();
+  switchTo(["screen-quiz"]);
+}
+
+function renderQuestion(){
+  const q = questions[current];
+  $("qIndex").textContent = current + 1;
+  $("qText").innerHTML = "❓ " + q.text.replace("___", "<b>___</b>");
+  const OPTIONS = ["a","an","the","–"];
+  $("options").innerHTML = OPTIONS.map(opt=>{
+    const id = `q${current}_${opt}`;
+    const checked = selections[current]===opt ? "checked" : "";
+    const display = (opt==="–") ? "(no article)" : opt;
+    return `<label><input type="radio" name="q${current}" id="${id}" value="${opt}" ${checked}> ${display}</label>`;
+  }).join("");
+}
+
+function nextQuestion(){
+  const radios = document.querySelectorAll(`input[name="q${current}"]`);
+  let chosen = null;
+  radios.forEach(r=>{ if(r.checked) chosen = r.value; });
+  if(chosen===null){
+    alert("โปรดเลือกคำตอบก่อนนะจ๊ะ");
+    return;
+  }
+  selections[current] = chosen;
+  if(current < questions.length - 1){
+    current++; renderQuestion();
+  }else{
+    finishQuiz();
+  }
+}
+
+function finishQuiz(){
+  let correct = 0;
+  selections.forEach((ans,i)=>{ if(ans===questions[i].answer) correct++; });
+  const pct = Math.round((correct/questions.length)*100);
+  const passed = (correct/questions.length) >= PASS_RATE;
+
+  attemptsMade += 1;
+  if(!passed){ everFailed = true; }
+
+  $("playerFinal").textContent = player;
+  $("scoreNum").textContent = correct;
+  $("scoreDen").textContent = questions.length;
+  $("scorePct").textContent = pct + "%";
+  $("passNote").classList.toggle("hidden", !passed);
+  $("failNote").classList.toggle("hidden", passed);
+
+  // RULE:
+  // 1) ถ้าครั้งแรก "ผ่าน" -> ดูเฉลยได้เลย
+  // 2) ถ้าครั้งแรก "ไม่ผ่าน" -> ต้องทำครบอีก 1 ครั้ง (ครั้งที่ 2 ผ่านหรือไม่ก็ได้) ถึงจะดูเฉลยได้
+  let canView = false;
+  if(attemptsMade === 1 && passed){
+    canView = true;
+  } else if (everFailed && attemptsMade >= 2){
+    canView = true;
+  }
+
+  $("viewAnsBtn").classList.toggle("hidden", !canView);
+
+  $("attemptInfo").textContent = canView
+    ? (attemptsMade===1 && passed
+        ? "ผ่านตั้งแต่ครั้งแรก — สามารถกดดูเฉลยได้เลย"
+        : `พยายามแล้ว ${attemptsMade} ครั้ง (เคยไม่ผ่าน) — ตอนนี้กดดูเฉลยได้`)
+    : (attemptsMade===1 && !passed
+        ? "ยังดูเฉลยไม่ได้ — ลองทำใหม่อีกครั้งก่อนนะ"
+        : "ยังดูเฉลยไม่ได้");
+
+  switchTo(["screen-result"]);
+}
+
+function retryQuiz(){
+  startQuiz(); // คง attemptsMade / everFailed ตามกติกา
+}
+
+function confirmQuit(){
+  if(confirm("ยืนยันกลับหน้าแรกไหม? คำตอบที่ทำไว้จะไม่ถูกบันทึก")) backToStart();
+}
+
+function showAnswers(){
+  const ol = $("answerList");
+  ol.innerHTML = "";
+  questions.forEach((q,idx)=>{
+    const li = document.createElement("li");
+    li.style.margin="8px 0";
+    const user = selections[idx] ?? "(ยังไม่ได้เลือก)";
+    const ok = user===q.answer;
+    const ansShow = q.answer==="–" ? "<span class='no-article'>(no article)</span>" : q.answer;
+    li.innerHTML = `${q.text.replace("___", "<b>"+ansShow+"</b>")} <br>
+      <span class="${ok?'':'muted'}">คำตอบของคุณ: <b style="color:${ok?'var(--good)':'var(--bad)'}">${user}</b></span>`;
+    ol.appendChild(li);
+  });
+  switchTo(["screen-answers"]);
+}
+</script>
+</body>
+</html>
